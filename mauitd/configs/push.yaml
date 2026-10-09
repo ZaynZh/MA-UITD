@@ -1,0 +1,52 @@
+{
+  "name": "simple_push_discrete",
+  "seed": 0,
+  "device": "cuda",
+  "dataset": {
+    "path": "mauitd/expert_data/simple_push.npz",
+    "format": "simple_push_discrete",
+    "sha256": "59e0ae2a0d392269f4cc353fbdccb4a9e1643ca85baa5f119bedb843055bea25"
+  },
+  "split": {"training": 4000, "validation": 500, "test": 500},
+  "model": {
+    "num_agents": 2,
+    "reward_input_dim": 6,
+    "state_input_dim": 10,
+    "feature_dim": 128,
+    "phi_hidden_dims": [128, 128],
+    "psi_hidden_dims": [256, 256],
+    "activation": "silu",
+    "dropout": 0.0,
+    "shared_encoder_dims": []
+  },
+  "action": {"kind": "discrete", "size": 5},
+  "n_step": 4,
+  "gamma": 0.95,
+  "training": {
+    "steps": 100000,
+    "batch_size": 256,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.00001,
+    "weight_l1": 0.05,
+    "tau": 0.0001,
+    "negatives": 16,
+    "temperature": 1.0,
+    "evaluation_frequency": 2000,
+    "gradient_clip": 1.0
+  },
+  "evaluation": {
+    "episodes": 500,
+    "candidates": 256,
+    "expert_checkpoint": "mauitd/evaluation/assets/simple_push_expert.pkl",
+    "expert_checkpoint_sha256": "28e553d1e9769fe0a08a44fc85b5d5a77161552bc65bf2cecab8ecb8377c00f8",
+    "action_force_directions": [
+      [0.0, 0.0],
+      [-1.0, 0.0],
+      [1.0, 0.0],
+      [0.0, -1.0],
+      [0.0, 1.0]
+    ],
+    "action_accelerations": [5.0, 5.0]
+  },
+  "output_dir": "showcase_runs/simple_push"
+}

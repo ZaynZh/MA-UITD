@@ -1,0 +1,42 @@
+{
+  "name": "simple_spread_discrete",
+  "seed": 0,
+  "device": "cuda",
+  "dataset": {
+    "path": "mauitd/expert_data/simple_spread.npz",
+    "format": "simple_spread_discrete",
+    "sha256": "283d89465f95ccea8e562d316a908c2859d5526c60e7c4b7fd2a7e98d719c892"
+  },
+  "split": {"training": 4000, "validation": 500, "test": 500},
+  "model": {
+    "num_agents": 2,
+    "reward_input_dim": 5,
+    "state_input_dim": 14,
+    "feature_dim": 6,
+    "phi_hidden_dims": [128, 128],
+    "psi_hidden_dims": [256, 256],
+    "activation": "silu",
+    "dropout": 0.0,
+    "shared_encoder_dims": []
+  },
+  "action": {"kind": "discrete", "size": 5},
+  "n_step": 4,
+  "gamma": 0.95,
+  "training": {
+    "steps": 100000,
+    "batch_size": 256,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.00001,
+    "weight_l1": 0.05,
+    "tau": 0.0001,
+    "negatives": 16,
+    "temperature": 1.0,
+    "evaluation_frequency": 2000,
+    "gradient_clip": 1.0
+  },
+  "evaluation": {
+    "episodes": 500,
+    "candidates": 64
+  },
+  "output_dir": "showcase_runs/simple_spread"
+}
