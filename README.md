@@ -70,4 +70,4 @@ truncated
 ```
 
 Set `dataset.format` to `canonical` in the task configuration. Episode IDs keep
-n-step targets and reward-to-go calculations within trajectory boundaries.
+n-step targets within trajectory boundaries.
