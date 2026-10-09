@@ -89,9 +89,6 @@ class MAUITD(nn.Module):
 
         def successor_network() -> nn.Sequential:
             if action_encoder.kind == "discrete" and action_encoder.output_dim == 5:
-                # The paper implementation first constructs its two-coordinate
-                # action layer, then replaces it with the five-action layer.
-                # Preserve that RNG draw order so published seeds reproduce.
                 first = nn.Linear(state_input_dim + 2, psi_hidden_1)
                 second = nn.Linear(psi_hidden_1, psi_hidden_2)
                 output = nn.Linear(psi_hidden_2, feature_dim)
