@@ -26,11 +26,21 @@ expert policy for the opposing role.
 
 ![Expert and MA-UITD policies in Gems](assets/animations/gems.gif)
 
-## Reward recovery animation
+## Reward recovery animations
 
-The Gems animation synchronizes an expert demonstration with the ground-truth
-and raw inferred arrival-state rewards for both agents. No calibration or
-rescaling is applied.
+Each animation synchronizes a held-out expert demonstration with the
+ground-truth and inferred arrival-state rewards for both agents. Each trace is
+independently min-max normalized to $[0,1]$ to emphasize temporal correlation.
+
+### Simple Spread
+
+![Simple Spread expert demonstration and recovered rewards](assets/animations/simple_spread_reward_recovery.gif)
+
+### Simple Push
+
+![Simple Push expert demonstration and recovered rewards](assets/animations/simple_push_reward_recovery.gif)
+
+### Gems
 
 ![Gems expert demonstration and recovered rewards](assets/animations/gems_reward_recovery.gif)
 
