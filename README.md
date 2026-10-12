@@ -90,12 +90,12 @@ n-step targets within trajectory boundaries.
 
 ### Simple Spread
 
-![Simple Spread expert demonstration and recovered arrival-state rewards](assets/animations/simple_spread_reward_recovery_normalized.gif)
+![Simple Spread expert demonstration and recovered arrival-state rewards](assets/animations/simple_spread_reward_recovery_smooth.gif)
 
 ### Simple Push
 
-![Simple Push expert demonstration and recovered arrival-state rewards](assets/animations/simple_push_reward_recovery_normalized.gif)
+![Simple Push expert demonstration and recovered arrival-state rewards](assets/animations/simple_push_reward_recovery_smooth.gif)
 
 ### Gems
 
-![Gems expert demonstration and recovered arrival-state rewards](assets/animations/gems_reward_recovery_normalized.gif)
+![Gems expert demonstration and recovered arrival-state rewards](assets/animations/gems_reward_recovery_smooth.gif)
