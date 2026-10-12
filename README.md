@@ -7,6 +7,25 @@ discrete or bounded continuous action spaces. This repository contains the
 compact implementation, the three benchmark configurations, the expert
 datasets used by those configurations, and task-specific evaluation code.
 
+## Policy animations
+
+The animations compare representative expert demonstrations with closed-loop
+rollouts of the recovered MA-UITD policies. Learned actions are selected
+greedily. In Simple Push, each learned role is shown in cross-play against the
+expert policy for the opposing role.
+
+### Simple Spread
+
+![Expert and MA-UITD policies in Simple Spread](assets/animations/simple_spread.gif)
+
+### Simple Push
+
+![Expert and MA-UITD cross-play policies in Simple Push](assets/animations/simple_push.gif)
+
+### Gems
+
+![Expert and MA-UITD policies in Gems](assets/animations/gems.gif)
+
 ## Installation
 
 The experiments were run with Python 3.10.20 and PyTorch 2.11.0 built for CUDA
