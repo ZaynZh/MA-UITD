@@ -72,12 +72,7 @@ truncated
 Set `dataset.format` to `canonical` in the task configuration. Episode IDs keep
 n-step targets within trajectory boundaries.
 
-## Policy animations
-
-The animations compare representative expert demonstrations with closed-loop
-rollouts of the recovered MA-UITD policies. Learned actions are selected
-greedily. In Simple Push, each learned role is shown in cross-play against the
-expert policy for the opposing role.
+## Policy imitation
 
 ### Simple Spread
 
@@ -91,11 +86,7 @@ expert policy for the opposing role.
 
 ![Expert and MA-UITD policies in Gems](assets/animations/gems.gif)
 
-## Reward recovery animations
-
-Each animation synchronizes a held-out expert demonstration with the
-ground-truth and inferred arrival-state rewards for both agents. Each trace is
-independently min-max normalized to $[0,1]$ to emphasize temporal correlation.
+## Reward recovery
 
 ### Simple Spread
 
