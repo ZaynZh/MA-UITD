@@ -26,6 +26,14 @@ expert policy for the opposing role.
 
 ![Expert and MA-UITD policies in Gems](assets/animations/gems.gif)
 
+## Reward recovery animation
+
+The Gems animation synchronizes an expert demonstration with the ground-truth
+and raw inferred arrival-state rewards for both agents. No calibration or
+rescaling is applied.
+
+![Gems expert demonstration and recovered rewards](assets/animations/gems_reward_recovery.gif)
+
 ## Installation
 
 The experiments were run with Python 3.10.20 and PyTorch 2.11.0 built for CUDA
