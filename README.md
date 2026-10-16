@@ -7,16 +7,6 @@ discrete or bounded continuous action spaces. This repository contains the
 compact implementation, the three benchmark configurations, the expert
 datasets used by those configurations, and task-specific evaluation code.
 
-## Tasks
-
-- **Simple Spread (cooperative):** Two agents coordinate to cover two landmarks
-  while avoiding collisions.
-- **Simple Push (competitive):** A good agent tries to reach a target landmark
-  while an adversary obstructs it through physical interaction.
-- **Gems (general-sum):** Red and Blue can collect their respective private gems
-  or coordinate to collect the more valuable purple gem; the episode ends when
-  any gem is collected.
-
 ## Installation
 
 The experiments were run with Python 3.10.20 and PyTorch 2.11.0 built for CUDA
@@ -86,13 +76,23 @@ n-step targets within trajectory boundaries.
 
 ### Simple Spread
 
+In this cooperative task, two agents coordinate to cover two landmarks while
+avoiding collisions.
+
 ![Expert and MA-UITD policies in Simple Spread](assets/animations/simple_spread.gif)
 
 ### Simple Push
 
+In this competitive task, a good agent tries to reach a target landmark while
+an adversary obstructs it through physical interaction.
+
 ![Expert and MA-UITD cross-play policies in Simple Push](assets/animations/simple_push.gif)
 
 ### Gems
+
+In this mixed-motive task, Red and Blue can collect their respective private
+gems or coordinate to collect the more valuable purple gem; the episode ends
+when any gem is collected.
 
 ![Expert and MA-UITD policies in Gems](assets/animations/gems.gif)
 
