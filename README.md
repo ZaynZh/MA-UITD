@@ -109,3 +109,5 @@ when any gem is collected.
 ### Gems
 
 ![Gems expert demonstration and recovered arrival-state rewards](assets/animations/gems_reward_recovery_smooth.gif)
+
+![Gems private-goal expert demonstration and recovered arrival-state rewards](assets/animations/gems_private_reward_recovery_smooth.gif)
