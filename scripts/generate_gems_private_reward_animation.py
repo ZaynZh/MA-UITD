@@ -125,21 +125,21 @@ def build_figure(data: dict, episode_id: int):
     outer = fig.add_gridspec(
         1,
         2,
-        width_ratios=(0.34, 0.66),
-        left=0.035,
+        width_ratios=(0.36, 0.64),
+        left=0.062,
         right=0.985,
         bottom=0.13,
         top=0.88,
-        wspace=0.22,
+        wspace=0.305,
     )
     env_ax = fig.add_subplot(outer[0])
     reward_grid = outer[1].subgridspec(4, 1, hspace=0.48)
     reward_axes = [fig.add_subplot(reward_grid[i]) for i in range(4)]
 
     fig.text(
-        0.235,
+        0.209,
         0.945,
-        "Private-goal expert demonstration",
+        "Expert demonstration",
         ha="center",
         va="center",
         fontsize=8.5,
@@ -147,7 +147,7 @@ def build_figure(data: dict, episode_id: int):
         color=BLACK,
     )
     fig.text(
-        0.705,
+        0.731,
         0.945,
         "Raw arrival-state rewards",
         ha="center",
@@ -160,6 +160,7 @@ def build_figure(data: dict, episode_id: int):
     env_ax.set_xlim(0.0, 1.0)
     env_ax.set_ylim(0.0, 1.0)
     env_ax.set_aspect("equal", adjustable="box")
+    env_ax.set_facecolor("#F8FAFC")
     env_ax.set_xticks([])
     env_ax.set_yticks([])
     for spine in env_ax.spines.values():
@@ -195,16 +196,21 @@ def build_figure(data: dict, episode_id: int):
         fontsize=6.2,
         color="#59636D",
     )
-    outcome_text = env_ax.text(
-        0.5,
-        -0.095,
-        "",
-        transform=env_ax.transAxes,
-        ha="center",
-        va="top",
-        fontsize=6.7,
-        fontweight="bold",
-        color=RED if data["collector"] == 0 else BLUE,
+    legend_handles = [
+        plt.Line2D([], [], marker="o", linestyle="none", color=RED, markersize=4.6),
+        plt.Line2D([], [], marker="o", linestyle="none", color=BLUE, markersize=4.6),
+    ]
+    fig.legend(
+        legend_handles,
+        ["Red agent", "Blue agent"],
+        loc="lower center",
+        bbox_to_anchor=(0.209, 0.045),
+        ncol=2,
+        frameon=False,
+        fontsize=6.4,
+        handlelength=0.8,
+        handletextpad=0.5,
+        columnspacing=1.5,
     )
 
     labels = (
@@ -215,8 +221,8 @@ def build_figure(data: dict, episode_id: int):
     )
     colors = (BLACK, RED, BLACK, BLUE)
     series = (truth[:, 0], inferred[:, 0], truth[:, 1], inferred[:, 1])
-    y_low = min(-0.5, float(np.min(inferred)) - 0.12)
-    y_high = max(3.0, float(np.max(inferred)) + 0.12)
+    y_low = min(-0.05, float(np.min(inferred)) - 0.06)
+    y_high = max(1.05, float(np.max(inferred)) + 0.06)
     x = np.arange(1, transition_count + 1)
     reward_lines = []
     reward_points = []
@@ -231,7 +237,7 @@ def build_figure(data: dict, episode_id: int):
         axis.spines["right"].set_visible(False)
         axis.spines["left"].set_color("#CBD4DB")
         axis.spines["bottom"].set_color("#CBD4DB")
-        axis.set_yticks([0, 1, 2, 3])
+        axis.set_yticks([0, 1])
         axis.tick_params(length=2.0, width=0.55, colors="#59636D", pad=1.5)
         if index < 3:
             axis.tick_params(axis="x", labelbottom=False)
@@ -255,16 +261,6 @@ def build_figure(data: dict, episode_id: int):
         reward_points.append(point)
         cursors.append(cursor)
 
-    fig.text(
-        0.235,
-        0.055,
-        f"Held-out episode {episode_id}",
-        ha="center",
-        va="center",
-        fontsize=6.2,
-        color="#707A83",
-    )
-
     def update(frame: int) -> None:
         position_index = frame + 1
         red_xy = data["positions"][: position_index + 1, 0:2]
@@ -283,12 +279,6 @@ def build_figure(data: dict, episode_id: int):
             line.set_data(visible_x, visible)
             point.set_data([visible_x[-1]], [visible[-1]])
             cursor.set_xdata([frame + 1, frame + 1])
-
-        if frame == transition_count - 1:
-            agent = "Red" if data["collector"] == 0 else "Blue"
-            outcome_text.set_text(f"{agent} agent collects its private gem")
-        else:
-            outcome_text.set_text("")
 
     return fig, update, transition_count, reward_axes
 
